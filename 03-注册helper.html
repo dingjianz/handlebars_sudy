@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>handlebars-study</title>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/handlebars.js"></script>
+  <script type="text/javascript">
+    let houdun = [{
+        name: '向华强',
+        age: 20,
+        sex: '男',
+        info:['爸爸','妈妈','奶奶']
+      },
+      {
+        name: '丁昭华',
+        age: 18,
+        sex: '男',
+        info:['牙齿','鼻子','嘴巴']
+      },
+      {
+        name: '防腐剂',
+        age: 36,
+        sex: '女',
+        info:['詹姆斯','卡哇伊','利拉德']
+      }
+    ]
+
+    $(function () {
+      let myTpl = Handlebars.compile($('#tbody-tr').html())
+      // 注册一个helper
+      Handlebars.registerHelper('addOne', function(index, option) {
+        // console.log(option)
+        return parseInt(index) + 1
+      })
+      $('tbody').html(myTpl(houdun))
+
+
+    })
+  </script>
+</head>
+
+<body>
+  <table border="1">
+    <tbody></tbody>
+  </table>
+  <script type="text/x-handlebars-template" id="tbody-tr">
+    {{#each this}}
+      {{#each info}}
+        <tr>
+          <td>{{addOne @index}}{{../name}}的{{this}}</td>
+        </tr>
+      {{/each}}
+    {{/each}}
+  </script>
+</body>
+
+</html>
