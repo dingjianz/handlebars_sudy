@@ -14,27 +14,39 @@
           name: '向华强',
           age: 20,
           sex: '男',
-          hobby:[{name:"篮球"},{name:"排球"}]
+          hobby: [{
+            name: "篮球"
+          }, {
+            name: "排球"
+          }]
         },
         {
           name: '丁昭华',
           age: 18,
           sex: '男',
-          hobby:[{name:"乒乓球"},{name:"竞走"}]
+          hobby: [{
+            name: "乒乓球"
+          }, {
+            name: "竞走"
+          }]
         },
         {
           name: '防腐剂',
           age: 36,
           sex: '女',
-          hobby:[{name:"游泳"},{name:"斯诺克"}]
+          hobby: [{
+            name: "游泳"
+          }, {
+            name: "斯诺克"
+          }]
         }
       ]
     }
 
     $(function () {
       let myTpl = Handlebars.compile($('#tbody-tr').html())
-      Handlebars.registerHelper('format', function(v) {
-        if (v===0) {
+      Handlebars.registerHelper('format', function (v) {
+        if (v === 0) {
           return '女'
         } else {
           return '男'
@@ -57,16 +69,16 @@
   </table>
   <script type="text/x-handlebars-template" id="tbody-tr">
     {{#each student}}
-    <tr>
-      <td>{{name}}</td>
-      <td>{{format sex}}</td>
-      <td>{{age}}</td>
-      <td>
-        {{#each hobby}}
-        <p>{{name}}</p>
-        {{/each}}
-      </td>
-    </tr>
+      <tr>
+        <td>{{name}}</td>
+        <td>{{format sex}}</td>
+        <td>{{age}}</td>
+        <td>
+          {{#each hobby}}
+            <p>{{name}}</p>
+          {{/each}}
+        </td>
+      </tr>
     {{/each}}
   </script>
 </body>

@@ -15,7 +15,7 @@
         sex: '男'
       },
       {
-        name: '积极',
+        name: '',
         age: 18,
         sex: '男'
       },
@@ -28,6 +28,9 @@
 
     $(function () {
       let myTpl = Handlebars.compile($('#tbody-tr').html())
+      Handlebars.registerHelper('editClass', function(index, name, option) {
+        return name + '_' +index
+      })
       $('tbody').html(myTpl(houdun))
     })
   </script>
@@ -46,7 +49,7 @@
   <script type="text/x-handlebars-template" id="tbody-tr">
     {{#each this}}
       {{#if name}}
-        <tr>
+        <tr class={{editClass @index 'class'}}>
           <td>{{@index}}</td>
           <td>{{name}}</td>
           <td>{{sex}}</td>
